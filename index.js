@@ -27,7 +27,7 @@ require('./routes/authRoutes')(app)
 require('./routes/billingRoutes')(app)
 
 if (process.env.NODE_ENC === 'production') {
-  app.use(express.static('client.cuild'))
+  app.use(express.static('client.build'))
 
   const path = require('path')
   app.get('*', (req, res) => {
