@@ -25,6 +25,15 @@ app.use(passport.session())
 
 require('./routes/authRoutes')(app)
 require('./routes/billingRoutes')(app)
+
+if (process.env.NODE_ENC === 'production') {
+  app.use(express.static('client.cuild'))
+
+  const path = require('path')
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
+  })
+}
   
 
 const PORT = process.env.PORT || 5001
